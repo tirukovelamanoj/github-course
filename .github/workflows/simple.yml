@@ -2,18 +2,18 @@ name: simple-workflow-for-shell-commands
 
 on:
   # push:
-  #schedule:
-  #  - cron: "28 * * * *"
-  repository_dispatch:
-    types:
-      - external-build-test
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - closed
-      - assigned
-      - synchronize
+  schedule:
+    - cron: "34 * * * *"
+  #repository_dispatch:
+  #  types:
+  #    - external-build-test
+  #pull_request:
+  #  types:
+  #    - opened
+  #    - reopened
+  #    - closed
+  #    - assigned
+  #    - synchronize
 
 jobs:
   run-shell-command:
