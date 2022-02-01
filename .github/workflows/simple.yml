@@ -1,7 +1,10 @@
 name: simple-workflow-for-shell-commands
 
 on:
-  push:
+  # push:
+  repository_dispatch:
+    types:
+      - external-build-test
   pull_request:
     types:
       - opened
@@ -51,4 +54,7 @@ jobs:
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
           echo "${{ steps.check-action-step.outputs.time }}"
+        shell: bash
+      - name: client payload repository_dispatch
+        run: echo "${{ github.event.client_payload.env }}"
         shell: bash
