@@ -1,6 +1,14 @@
 name: simple-workflow-for-shell-commands
 
-on: [push]
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - closed
+      - assigned
+      - synchronize
 
 jobs:
   run-shell-command:
