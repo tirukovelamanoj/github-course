@@ -21,8 +21,26 @@ jobs:
     runs-on: windows-latest
     needs: ["run-shell-command"]
     steps:
+      - name: Before Checkout
+        run: |
+          pwd
+          ls
+        shell: bash
+      - name: Checkout Action
+        id: check-action-step
+        uses: actions/checkout@v2
+      - name: After Checkout
+        run: |
+          pwd
+          ls
+        shell: bash
       - name: Directory Powershell
         run: Get-Location
-      - name: Directory bash
-        run: pwd
+      - name: some defined objects
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          echo "${{ steps.check-action-step.outputs.time }}"
         shell: bash
