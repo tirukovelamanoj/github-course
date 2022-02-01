@@ -3,7 +3,7 @@ name: simple-workflow-for-shell-commands
 on:
   # push:
   schedule:
-    - cron: "0/5 * * * *"
+    - cron: "*/5 * * * *"
   repository_dispatch:
     types:
       - external-build-test
