@@ -3,6 +3,8 @@ on: push
 env:
   WF_ENV: Available to all jobs
   GH_ENV: ${{ secrets.GIT_HUB_ENV_VAR }}
+  # GITHUB_TOKEN for using github api
+  GH_TOK: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   log-env-1:
