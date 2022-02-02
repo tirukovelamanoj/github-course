@@ -2,6 +2,7 @@ name: ENV Variables
 on: push
 env:
   WF_ENV: Available to all jobs
+  GH_ENV: ${{ secrets.GIT_HUB_ENV_VAR }}
 
 jobs:
   log-env-1:
@@ -46,3 +47,10 @@ jobs:
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
           echo "GITHUB_SHA: ${GITHUB_SHA}"
           echo "GITHUB_REF: ${GITHUB_REF}"
+  
+  log-github-secrets: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Secrets as ENV Variables  
+        run: |
+          echo "GitHub Secret Env Variable: ${GH_ENV}"
