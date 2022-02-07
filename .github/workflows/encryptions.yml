@@ -16,14 +16,14 @@ jobs:
           git config --global user.name "my-bot"
           git fetch
           git checkout master
-          git branch -u origin master
+          git branch --set-upstream-to=origin/master
           git pull
           ls -a
           echo $RANDOM >> random.txt
           ls -a
           git add -A
           git commit -m "push a random file through vm"
-          git push -u origin master
+          git push
   
   decrypting-file:
     runs-on: ubuntu-latest
@@ -32,6 +32,6 @@ jobs:
         env:
           PASSPHRASE : ${{ secrets.PASSPHRASE }}
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json secret.json.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json $HOME/Files/secret.json.gpg
       - name: print our decrypted file
         run: cat $HOME/secret.json
