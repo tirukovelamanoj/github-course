@@ -17,8 +17,9 @@ jobs:
             is_ubuntu_10: "true"
       fail-fast: true
     runs-on: ${{ matrix.os }}
+    env: 
+      IS_UBUNTU_10: ${{ matrix.is_ubuntu_10 }}
     steps:
-      - uses: actions/checkout@v2
       - name: log os
         run: echo ${{ matrix.os }}
       - name: log npm version
@@ -30,4 +31,4 @@ jobs:
       - name: After setup node log npm version
         run: npm -v
       - name: Only for ubuntu-latest and node-version 10
-        run: echo $is_ubuntu_10
+        run: echo $IS_UBUNTU_10
