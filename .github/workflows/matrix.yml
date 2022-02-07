@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: log os
-        run: ${{ matrix.os }}
+        run: echo ${{ matrix.os }}
       - name: log npm version
         run: npm -v
       - name: changing npm version
