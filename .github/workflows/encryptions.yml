@@ -29,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: decrypting a encrypted file
-        uses: actions/checkout@v2
         env:
           PASSPHRASE : ${{ secrets.PASSPHRASE }}
         run: |
