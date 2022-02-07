@@ -1,0 +1,28 @@
+name: Context and Expressions in GitHub Actions
+
+on: [push]
+
+jobs:
+  defined-expressions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: defined Functions
+        run: |
+          echo ${{ contains('hello','ll') }}
+          echo ${{ startsWith('hello','he') }}
+          echo ${{ endsWith('hello','lo') }}
+          echo ${{ format('Hello {0} {1} {2}','World','!','!') }}
+      - name: status check Functions
+        run: echo "Status Check Function - failure,success,always,cancelled"
+      - name: Function 0
+        if: success()
+        run: echo "Step executed successfully"
+      - name: Function 1
+        if: ${{ success() }}
+        run: echo "Step executed successfully"
+      - name: Function 2
+        if: failure()
+        run: echo "Job failed!"
+      - name: Function 3
+        if: always()
+        run: echo "This will run always."
