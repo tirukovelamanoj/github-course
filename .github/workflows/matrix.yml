@@ -1,0 +1,33 @@
+name: Matrix and Strategy
+
+on: push
+
+jobs:
+  matrix-strategy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node_version: [8,10]
+        exclude:
+          - os: ubuntu-latest
+            node_version: 8
+        include:
+          - os: ubuntu-latest
+            node_version: 10
+            is_ubuntu_10: "true"
+      fail-fast: true
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: log os
+        run: ${{ matrix.os }}
+      - name: log npm version
+        run: npm -v
+      - name: changing npm version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: After setup node log npm version
+        run: npm -v
+      - name: Only for ubuntu-latest and node-version 10
+        run: echo $is_ubuntu_10
