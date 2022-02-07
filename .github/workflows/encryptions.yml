@@ -35,6 +35,6 @@ jobs:
         run: |
           pwd
           ls -a
-          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json $HOME/Files/secret.json.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json Files/secret.json.gpg
       - name: print our decrypted file
         run: cat $HOME/secret.json
