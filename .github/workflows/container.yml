@@ -23,6 +23,7 @@ jobs:
           args: "Hello World!"
       - uses: actions/checkout@v2
       - name: executing a script
+        uses: docker://node:17.4-alpine3.15
         with:
           entrypoint: "./Files/script.sh"
           args: "Hello World!"
