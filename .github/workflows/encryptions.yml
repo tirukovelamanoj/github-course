@@ -1,6 +1,6 @@
 name: Encrypting files and decrypting files
 
-on: [push]
+on: [pull_request]
 
 jobs:
   push-random-file:

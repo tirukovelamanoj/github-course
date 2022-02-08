@@ -1,6 +1,6 @@
 name: Matrix and Strategy
 
-on: push
+on: pull_request
 
 jobs:
   matrix-strategy:
