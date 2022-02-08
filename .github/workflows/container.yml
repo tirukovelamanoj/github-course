@@ -22,6 +22,9 @@ jobs:
           entrypoint: "/bin/echo"
           args: "Hello World!"
       - uses: actions/checkout@v2
+      - name: making script file executable
+        run: |
+          chmod +x /Files/script.sh
       - name: executing a script
         uses: docker://node:17.4-alpine3.15
         with:
